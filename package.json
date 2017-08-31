@@ -1,0 +1,33 @@
+{
+  "name": "webapp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "webpack -d --progress --colors --watch",
+    "build": "webpack -p --progress --colors",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-es2018": "^1.0.0",
+    "babel-preset-react": "^6.24.1",
+    "css-loader": "^0.28.5",
+    "express": "^4.15.4",
+    "google-map-react": "^0.24.0",
+    "html-loader": "^0.5.1",
+    "jade": "^1.11.0",
+    "mocha": "^3.5.0",
+    "mysql": "^2.14.1",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "react-google-autocomplete": "^1.0.13",
+    "react-redux": "^5.0.6",
+    "style-loader": "^0.18.2",
+    "webpack": "^3.5.5",
+    "websocket": "^1.0.24"
+  }
+}
