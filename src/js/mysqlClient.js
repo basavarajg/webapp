@@ -1,19 +1,13 @@
-var sysdb  = require('./dbConf');
+'use strict';
 
-exports.executeQuery = function(query, args) {
-  var connection  = sysdb.establishConnection();
-  console.log(query);
-  var resultset = connection.query({
-    sql: query,
-    timeout: 40000, // 40s
-    values: args
-  }, function (error, results, fields) {
-    // error will be an Error if one occurred during the query
-    // results will contain the results of the query
-    return results;
-    // fields will contain information about the returned results fields (if any)
-  });
+var Promise = require('promise');
+const Database = require('./database.js');
 
-  sysdb.closeConnection(connection);
-  console.log(resultset);
-}
+const query = 'select firstname from user where username=? and password=?';
+const args = ['basu','basu'];
+
+var database = new Database();
+database.query(query, args).then( rows => {
+    console.log(rows);
+});
+database.close();
