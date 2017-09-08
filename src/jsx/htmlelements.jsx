@@ -20,7 +20,6 @@ export class TextField extends Component {
   constructor(props) {
     super(props);
     this.state = {value: ''};
-
     this.handleChange = this.handleChange.bind(this);
   }
 
@@ -32,7 +31,7 @@ export class TextField extends Component {
     return (
       <div className="mdl-textfield mdl-js-textfield  mdl-textfield--floating-label">
         <input className="mdl-textfield__input" type="text"
-          id = {this.props.id}
+          ref = {this.props.id}
           value = {this.state.value} onChange = {this.handleChange} />
         <Label labelName={this.props.labelName} id={this.props.id} />
       </div>
@@ -44,7 +43,6 @@ export class Password extends Component {
   constructor(props) {
     super(props);
     this.state = {value: ''};
-
     this.handleChange = this.handleChange.bind(this);
   }
 
@@ -56,7 +54,7 @@ export class Password extends Component {
     return (
       <div className="mdl-textfield mdl-js-textfield  mdl-textfield--floating-label">
         <input  className="mdl-textfield__input" type="password"
-          id = {this.props.id}
+          ref = {this.props.id}
           value={this.state.value} onChange={this.handleChange} />
         <Label labelName={this.props.labelName} id={this.props.id} />
       </div>
@@ -71,7 +69,12 @@ export class Button extends Component {
   render() {
     return (
       <div>
-        <button className="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
+        <button className="mdl-button
+        mdl-js-button
+        mdl-button--fab
+        mdl-js-ripple-effect
+        mdl-button--colored"
+        type={this.props.id}>
           <i className="material-icons">{this.props.btnName}</i>
         </button>
       </div>
