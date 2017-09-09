@@ -5,7 +5,6 @@ import '../css/material.css';
 //import {TextField, Password, Button} from './HtmlElements.jsx';
 
 
-
 class Register extends Component {
   constructor(props) {
     super(props);
@@ -15,73 +14,75 @@ class Register extends Component {
       fname: '',
       mname: '',
       lname: ''
+
     }
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
   }
 
   handleChange(event) {
-    //event.preventDefault();
-    let target = event.target;
-
-    if('username'===target.id)
-      this.setState({username: target.value});
-    else if('password'===target.id)
-      this.setState({password: target.value});
-    else if('fname'===target.id)
-      this.setState({fname: target.value});
-    else if('mname'===target.id)
-      this.setState({mname: target.value});
-    else if('lname'===target.id)
-      this.setState({lname: target.value});
-
+    let target = event.target.id;
+    if('username'===target)
+      this.setState({username: event.target.value});
+    else if('password'===target)
+      this.setState({password: event.target.value});
+    else if('fname'===target)
+      this.setState({fname: event.target.value});
+    else if('mname'===target)
+      this.setState({mname: event.target.value});
+    else if('lname'===target)
+      this.setState({lname: event.target.value});
   }
 
   handleSubmit(event) {
     event.preventDefault();
-    console.log(this.state);
   }
 
   render() {
     return (
-      <div>
-        <form onSubmit={this.handleSubmit}>
+      <div className=" mdl-grid mdl-card mdl-shadow--16dp mdl-color--blue-grey-50">
+        <form action="/register" method="post">
+          <div class="mdl-card__title mdl-color--teal-500">
+            <h2 class="mdl-card__title-text mdl-color-text--white">Create Account</h2>
+          </div>
           <div className="mdl-textfield mdl-js-textfield  mdl-textfield--floating-label">
-            <input className="mdl-textfield__input" type="text" id="username"
-              onChange={this.handleChange} value={this.state.username}/>
+            <input  className="mdl-textfield__input" type="text" id="username" autoFocus="autoFocus"
+              value={this.state.username} onChange={this.handleChange}/>
             <label className="mdl-textfield__label" htmlFor="username">User Name</label>
           </div>
-          <br />
           <div className="mdl-textfield mdl-js-textfield  mdl-textfield--floating-label">
-            <input className="mdl-textfield__input" type="password" id="password"
-              onChange={this.handleChange} value={this.state.password}/>
+            <input  className="mdl-textfield__input" type="password" id="password"
+              value={this.state.password} onChange={this.handleChange}/>
             <label className="mdl-textfield__label" htmlFor="password">Password</label>
           </div>
-          <br />
           <div className="mdl-textfield mdl-js-textfield  mdl-textfield--floating-label">
-            <input className="mdl-textfield__input" type="text" id="fname"
-              onChange={this.handleChange} value={this.state.fname}/>
+            <input  className="mdl-textfield__input" type="text" id="fname"
+              value={this.state.fname} onChange={this.handleChange}/>
             <label className="mdl-textfield__label" htmlFor="fname">First Name</label>
           </div>
-          <br />
           <div className="mdl-textfield mdl-js-textfield  mdl-textfield--floating-label">
-            <input className="mdl-textfield__input" type="text" id="mname"
-              onChange={this.handleChange} value={this.state.mname}/>
+            <input  className="mdl-textfield__input" type="text" id="mname"
+              value={this.state.mname} onChange={this.handleChange}/>
             <label className="mdl-textfield__label" htmlFor="mname">Middle Name</label>
           </div>
-          <br />
           <div className="mdl-textfield mdl-js-textfield  mdl-textfield--floating-label">
-            <input className="mdl-textfield__input" type="text" id="lname"
-              onChange={this.handleChange} value={this.state.lname}/>
+            <input  className="mdl-textfield__input" type="text" id="lname"
+              value={this.state.lname} onChange={this.handleChange}/>
             <label className="mdl-textfield__label" htmlFor="lname">Last Name</label>
           </div>
-          <div>
+          <div className="mdl-cell mdl-cell--12-col send-button" align="center">
             <button className="mdl-button
               mdl-js-button
-              mdl-button--fab
+              mdl-button--raised
               mdl-js-ripple-effect
-              mdl-button--colored"
-              type="submit"> + </button>
+              mdl-button--accent"
+              type="submit"> Register </button>&nbsp;&nbsp;&nbsp;&nbsp;
+              <button className="mdl-button
+                mdl-js-button
+                mdl-button--raised
+                mdl-js-ripple-effect
+                mdl-button--accent"
+                type="reset">Reset</button>
           </div>
         </form>
       </div>
