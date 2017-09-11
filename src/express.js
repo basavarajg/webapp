@@ -34,11 +34,11 @@ app.post('/', function (req, res) {
     //res.render('index', {title: 'Home', message: 'Hellow World from Jade'});
 });
 
-app.get('/register',function (req, res) {
+app.route('/register')
+  .get(function (req, res) {
     res.sendFile(__dirname + '/html/register.html')
-});
-
-app.post('/register',function (req, res) {
+})
+.post(function (req, res) {
     if (!req.body)
       return res.sendStatus(400)
     console.dir(req.body);
