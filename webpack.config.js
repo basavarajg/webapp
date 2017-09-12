@@ -6,6 +6,7 @@ var APP_DIR = path.resolve(__dirname, 'src');
 
 var config = {
   entry: {
+    login: APP_DIR + '/jsx/login.jsx',
     register: APP_DIR + '/jsx/register.jsx',
     maps: APP_DIR + '/jsx/gmap.jsx',
     material: APP_DIR + '/js/material.js'

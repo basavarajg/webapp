@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "webpack -d --progress --colors --watch",
     "build": "webpack -p --progress --colors",
+    "start": "node express.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",

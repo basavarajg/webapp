@@ -25,15 +25,26 @@ app.get('/', function (req, res) {
     //res.render('index', {title: 'Home', message: 'Hellow World from Jade'});
 });
 
-app.post('/', function (req, res) {
+app.route('/login')
+  .get(function (req, res) {
+    res.sendFile(__dirname + '/html/login.html');
+})
+.post(function (req, res) {
   res.setHeader('Content-Type', 'text/html');
-
-  //mimic a slow network connection
-  //setTimeout(function(){
-    console.log(req.body.firstName);
-    res.send(JSON.stringify(req.body.firstName));
-  //}, 1000)
-    //res.render('index', {title: 'Home', message: 'Hellow World from Jade'});
+  if (!req.body)
+    return res.sendStatus(400)
+  //console.dir(req.body);
+  var database = new Database();
+  const query = 'select * from user where username=? and password=?';
+  var args = [req.body.username, req.body.password];
+  console.log(args);
+  database.query(query, args).then( rows => {
+      console.log(rows);
+  }).then(() => {
+    database.close().then(() => {
+      res.send('Login successfully!');
+    });
+  });
 });
 
 app.route('/register')
@@ -47,6 +58,7 @@ app.route('/register')
     var database = new Database();
     const query = 'insert into user set ?';
     var args = req.body;
+
     database.query(query, args).then( rows => {
         console.log(rows);
     }).then(() => {
