@@ -17,9 +17,12 @@ module.exports = class Database {
     }
     query(sql, args) {
         return new Promise((resolve, reject) => {
-            this.connection.query(sql, args, (err, rows) => {
-                if (err)
+            this.connection.query(sql, args, (err, rows, fields) => {
+                if (err) {
+                  //return connection.rollback(function() {
                     return reject( err );
+                  //});
+                }
                 resolve(rows);
             });
         });

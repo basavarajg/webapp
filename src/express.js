@@ -3,6 +3,8 @@ var bodyParser = require('body-parser');
 var http = require('http');
 var path = require('path');
 var util = require('util');
+var Promise = require('promise');
+const Database = require('./js/database.js');
 
 var app = express();
 //support parsing of application/json type post data
@@ -27,10 +29,10 @@ app.post('/', function (req, res) {
   res.setHeader('Content-Type', 'text/html');
 
   //mimic a slow network connection
-  setTimeout(function(){
+  //setTimeout(function(){
     console.log(req.body.firstName);
     res.send(JSON.stringify(req.body.firstName));
-  }, 1000)
+  //}, 1000)
     //res.render('index', {title: 'Home', message: 'Hellow World from Jade'});
 });
 
@@ -41,8 +43,17 @@ app.route('/register')
 .post(function (req, res) {
     if (!req.body)
       return res.sendStatus(400)
-    console.dir(req.body);
-    res.send(req.body);
+    //console.dir(req.body);
+    var database = new Database();
+    const query = 'insert into user set ?';
+    var args = req.body;
+    database.query(query, args).then( rows => {
+        console.log(rows);
+    }).then(() => {
+      database.close().then(() => {
+        res.send('Date insterted successfully!');
+      });
+    });
 });
 
 app.listen(3000, function () {
