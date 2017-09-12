@@ -26,9 +26,11 @@ class Login extends Component {
   }
 
   handleSubmit(event) {
-    //event.preventDefault();
-    //console.dir(event.target);
-    event.target.submit();
+    ///console.dir(event.target);
+    if(''===this.state.username)
+      event.preventDefault();
+    else
+      event.target.submit();
   }
 
   render() {
@@ -51,13 +53,19 @@ class Login extends Component {
                     value={this.state.password} onChange={this.handleChange}/>
       						<label className="mdl-textfield__label" for="password">Password</label>
       					</div>
-                <div className="mdl-card__actions">
+                <div className="mdl-card__actions mdl-layout">
           				<button className="mdl-button
                   mdl-button--colored
                   mdl-js-button
                   mdl-js-ripple-effect">Log in</button>
           			</div>
       				</form>
+              <div className="mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet links">
+      					<a className="mdl-button--primary">Register now !</a>
+      				</div>
+              <div className="mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet links">
+                <a className="mdl-button--primary">Forgot password ?</a>
+      				</div>
       			</div>
       		</div>
       	</main>

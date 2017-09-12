@@ -42,9 +42,11 @@ class Register extends Component {
   }
 
   handleSubmit(event) {
-    event.preventDefault();
     //console.dir(event.target);
-    event.target.submit();
+    if(''===this.state.username)
+      event.preventDefault();
+    else
+      event.target.submit();
   }
 
   render() {
@@ -92,7 +94,7 @@ class Register extends Component {
                     value={this.state.mobile} onChange={this.handleChange}/>
                   <label className="mdl-textfield__label" htmlFor="mobile">Mobile</label>
                 </div>
-                <div className="mdl-card__actions">
+                <div className="mdl-card__actions mdl-layout">
                   <button className="mdl-button
                   mdl-button--colored
                   mdl-js-button
