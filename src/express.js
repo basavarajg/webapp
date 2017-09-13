@@ -38,11 +38,20 @@ app.route('/login')
   const query = 'select * from user where username=? and password=?';
   var args = [req.body.username, req.body.password];
   console.log(args);
+  var welcomeMsg = 'Welcome '
   database.query(query, args).then( rows => {
-      console.log(rows);
+      if(0===rows.length) {
+        database.close();
+        return res.send('Incorrect Username/Password');
+      }
+      else{
+        welcomeMsg+=rows[0].firstname + ' ' + rows[0].middlename + ' ' + rows[0].lastname;
+      }
+
+
   }).then(() => {
     database.close().then(() => {
-      res.send('Login successfully!');
+      res.send(welcomeMsg);
     });
   });
 });
@@ -66,6 +75,11 @@ app.route('/register')
         res.send('Date insterted successfully!');
       });
     });
+});
+
+app.get('/aboutus', function (req, res) {
+    res.sendFile(__dirname + '/html/aboutus.html');
+    //res.render('index', {title: 'Home', message: 'Hellow World from Jade'});
 });
 
 app.listen(3000, function () {

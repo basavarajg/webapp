@@ -35,7 +35,16 @@ class Login extends Component {
 
   render() {
     return (
-      <div className="mdl-layout mdl-js-layout mdl-color--grey-100">
+      <div className="mdl-layout mdl-js-layout mdl-color--blue-100">
+        <div className="mdl-layout__drawer">
+          <span className="mdl-layout-title">Menu</span>
+          <nav className="mdl-navigation">
+           <a className="mdl-navigation__link" href = "/">Home</a>
+           <a className="mdl-navigation__link" href = "/register">Register</a>
+           <a className="mdl-navigation__link" href = "/aboutus">About Us</a>
+          </nav>
+        </div>
+
       	<main className="mdl-layout__content">
       		<div className="mdl-card mdl-shadow--6dp">
       			<div className="mdl-card__title mdl-color--primary mdl-color-text--white">
@@ -43,32 +52,31 @@ class Login extends Component {
       			</div>
       	  	<div className="mdl-card__supporting-text">
       				<form action="/login" method="post" onSubmit={this.handleSubmit}>
-      					<div className="mdl-textfield mdl-js-textfield">
+      					<div className="mdl-textfield mdl-js-textfield ">
       						<input className="mdl-textfield__input" type="text" name="username" autoFocus="autoFocus"
-                    value={this.state.username} onChange={this.handleChange}/>
-      						<label className="mdl-textfield__label" for="username">Username</label>
+                    pattern="[A-Z,a-z,0-9]*" value={this.state.username} onChange={this.handleChange}/>
+      						<label className="mdl-textfield__label" htmlFor="username">Username</label>
+
       					</div>
       					<div className="mdl-textfield mdl-js-textfield">
       						<input className="mdl-textfield__input" type="password" name="password"
                     value={this.state.password} onChange={this.handleChange}/>
-      						<label className="mdl-textfield__label" for="password">Password</label>
+      						<label className="mdl-textfield__label" htmlFor="password">Password</label>
       					</div>
-                <div className="mdl-card__actions mdl-layout">
-          				<button className="mdl-button
+                <div className="mdl-card__actions">
+          				<button className="mdl-button mdl-layout-left
                   mdl-button--colored
                   mdl-js-button
-                  mdl-js-ripple-effect">Log in</button>
-          			</div>
+                  mdl-js-ripple-effect" type="submit">Log in</button>
+                  <button className="mdl-button mdl-layout-right
+                  mdl-button--colored
+                  mdl-js-button
+                  mdl-js-ripple-effect" type="button">Forgot Password</button>
+                </div>
       				</form>
-              <div className="mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet links">
-      					<a className="mdl-button--primary">Register now !</a>
-      				</div>
-              <div className="mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet links">
-                <a className="mdl-button--primary">Forgot password ?</a>
-      				</div>
-      			</div>
+            </div>
       		</div>
-      	</main>
+        </main>
       </div>
     )};
 }

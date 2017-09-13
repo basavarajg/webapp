@@ -2,6 +2,14 @@
 	align-items: center;
   justify-content: center;
 }
+.mdl-layout-left {
+	align-items: left;
+  justify-content: left;
+}
+.mdl-layout-right {
+	align-items: right;
+  justify-content: right;
+}
 .mdl-layout__content {
 	padding: 24px;
 	flex: none;
