@@ -27,10 +27,7 @@ class Login extends Component {
 
   handleSubmit(event) {
     ///console.dir(event.target);
-    if(''===this.state.username)
-      event.preventDefault();
-    else
-      event.target.submit();
+        event.target.submit();
   }
 
   render() {
