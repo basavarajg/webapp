@@ -32,13 +32,15 @@ class Login extends Component {
 
   render() {
     return (
-      <div className="mdl-layout mdl-js-layout mdl-color--blue-100">
+      <div className="mdl-layout mdl-js-layout mdl-color--grey-900">
         <div className="mdl-layout__drawer">
-          <span className="mdl-layout-title">Menu</span>
+          {
+            //<span className="mdl-layout-title">Features</span>
+          }
           <nav className="mdl-navigation">
-           <a className="mdl-navigation__link" href = "/">Home</a>
-           <a className="mdl-navigation__link" href = "/register">Register</a>
-           <a className="mdl-navigation__link" href = "/aboutus">About Us</a>
+           <a className="mdl-navigation__link mdl-color-text--black" href = "/">Home</a>
+           <a className="mdl-navigation__link mdl-color-text--black" href = "/register">Register</a>
+           <a className="mdl-navigation__link mdl-color-text--black" href = "/aboutus">About Us</a>
           </nav>
         </div>
 

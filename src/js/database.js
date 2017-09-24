@@ -17,7 +17,8 @@ module.exports = class Database {
     }
     query(sql, args) {
       return new Promise((resolve, reject) => {
-        this.connection.query(sql, args, (err, rows, fields) => {
+        var query = this.connection.query(sql, args, (err, rows, fields) => {
+          console.log(query.sql);
           if (err) {
             //return connection.rollback(function() {
               return reject( err );

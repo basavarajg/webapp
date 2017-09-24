@@ -3,16 +3,13 @@
 var Promise = require('promise');
 const Database = require('./database.js');
 
-//const query = 'select firstname from user where username=? and password=?';
+const query = 'select firstname, lastname from user where ?';
 //const args = ['basu','basu'];
 
-const query = 'insert into user set ?';
+//const query = 'insert into user set ?';
 const args = {
-  username:'basavarajg', 
-  password: 'password', 
-  firstname: 'Basavaraj',
-  lastname: 'Goudappanavar',
-  middlename: 'S'
+  username:'chavva.pratinya', 
+  password: 'chavva'
 };
 
 var database = new Database();
